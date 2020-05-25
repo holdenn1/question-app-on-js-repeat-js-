@@ -67,3 +67,7 @@ html, body, input, textarea, button {
 .modal .modal-content {
   padding: 1rem;
 }
+
+.error{ 
+  color: red;
+}

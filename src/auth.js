@@ -16,6 +16,21 @@ export function getAuthForm() {
       Войти
       </button>
     </form>
-    `
-  
+    ` 
+}
+
+export function authWithEmailAndPassword(email, password){
+  const apiKey = 'AIzaSyBoQneaX9CKkIf2JxdG05nGka2i646OCCo'
+  return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      email, password,
+      returnSecureToken: true
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => data.idToken) // для idToken того чтобы в app.js получать токен
 }
